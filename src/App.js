@@ -58,9 +58,31 @@ function App() {
       //faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
       faceapi.draw.drawFaceExpressions(canvasRef.current, resizedDetections);
 
-      console.log(detections);
-      //console.log(canvasRef.current);
-    }, 1500);
+      // console.log(faceapi.draw.drawFaceExpressions());
+      // console.log(detections);
+
+      const mood_return = detections.map((item) => {
+        var exp = [
+          item.expressions.happy,
+          item.expressions.neutral,
+          item.expressions.sad,
+          item.expressions.surprised,
+          item.expressions.angry,
+        ];
+        var getMaxValue = Math.max(...exp);
+        var moods = ['happy', 'neutral', 'sad', 'surprised', 'angry'];
+        var finalMood;
+
+        for (var i = 0; i <= exp.length; i++) {
+          if (getMaxValue === exp[i]) {
+            finalMood = moods[i];
+          }
+        }
+        return finalMood;
+      });
+
+      console.log('>>>>', mood_return);
+    }, 5000);
   };
   return (
     <div className="App">
