@@ -8,6 +8,7 @@ function App() {
   const videoWidth = 480;
   const videoHeight = 640;
   const [initaiallizing, setInitaiallizing] = useState(false);
+  const [moodDetection, setMoodDetection] = useState(false);
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -30,7 +31,7 @@ function App() {
 
       (stream) => (videoRef.current.srcObject = stream),
       function () {
-        console.warn('Error getting audio stream from getUserMedia');
+        console.warn('Error getting video stream from getUserMedia');
       }
     );
   };
@@ -84,27 +85,60 @@ function App() {
       });
 
       console.log('>>>>', mood_return);
-    }, 5000);
+    }, 1500);
   };
-  return (
-    <div className="App">
-      <span>{initaiallizing ? 'initaiallizing' : 'ready'}</span>
-      <div className="display-flex justify-content-center">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          height={videoHeight}
-          width={videoWidth}
-          onPlay={haddleVideoOnPlay}
-        />
-        <canvas ref={canvasRef} className="position-absolute" />
-      </div>
-      <div>
+
+  const clickHadler = () => {
+    setMoodDetection(true);
+  };
+
+  const WindowHadler = () => {
+    return !moodDetection ? (
+      <>
+        <span>{initaiallizing ? 'initaiallizing' : 'ready'}</span>
+        <div className="display-flex justify-content-center">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            height={videoHeight}
+            width={videoWidth}
+            onPlay={haddleVideoOnPlay}
+          />
+          <canvas ref={canvasRef} className="position-absolute" />
+        </div>
+        <button
+          style={{
+            background: 'black',
+            width: 200,
+            height: 60,
+            color: 'white',
+          }}
+          onClick={clickHadler}
+        >
+          Click here!
+        </button>
+        <h1>Capture your emotion !!</h1>
+      </>
+    ) : (
+      <>
         <Player />
-      </div>
-    </div>
-  );
+        <button
+          style={{
+            background: 'black',
+            width: 200,
+            height: 60,
+            color: 'white',
+          }}
+          onClick={clickHadler}
+        >
+          Click here!
+        </button>
+        <h1>Change emotion !!</h1>
+      </>
+    );
+  };
+  return <div className="App">{WindowHadler()}</div>;
 }
 
 export default App;
