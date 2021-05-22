@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import * as faceapi from 'face-api.js';
 
+import { Player } from './components/player/Player';
+
 function App() {
   const videoWidth = 480;
   const videoHeight = 640;
@@ -97,6 +99,9 @@ function App() {
           onPlay={haddleVideoOnPlay}
         />
         <canvas ref={canvasRef} className="position-absolute" />
+      </div>
+      <div>
+        <Player />
       </div>
     </div>
   );
