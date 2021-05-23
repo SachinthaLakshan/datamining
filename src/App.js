@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import * as faceapi from 'face-api.js';
+import background from './cover/back.png';
 
 import { Player } from './components/player/Player';
 
@@ -90,10 +91,8 @@ function App() {
 
       var selectedmood;
       if (mood_return[0] !== 'undefined') {
-
-      
-      window.temp = mood_return[0];
-    }
+        window.temp = mood_return[0];
+      }
     }, 5000);
   };
 
@@ -104,7 +103,6 @@ function App() {
     moodDetectionSet = true;
   };
   const clickHadler1 = () => {
-    
     setMoodDetection(false);
     moodDetectionSet = false;
   };
@@ -123,30 +121,34 @@ function App() {
         >
           Click here!
         </button>
-        <h1 color='white' className="headerName">Catch my mood !!</h1>
+        <h1 color="white" className="headerName">
+          Catch my mood !!
+        </h1>
       </>
     ) : (
       <>
-      <card className="card">
-        <button
-          style={{
-            background: '#FC0400',
-            width: 200,
-            height: 60,
-            color: 'white',
-          }}
-          onClick={clickHadler1}
-        >
-          Click here!
-        </button>
-        <h1 color='white' className="headerName">Catch Again my mood !!</h1>
-        <Player emotion={expressioncatch} />
+        <card className="card">
+          <button
+            style={{
+              background: '#FC0400',
+              width: 200,
+              height: 60,
+              color: 'white',
+            }}
+            onClick={clickHadler1}
+          >
+            Click here!
+          </button>
+          <h1 color="white" className="headerName">
+            Catch Again my mood !!
+          </h1>
+          <Player emotion={expressioncatch} />
         </card>
       </>
     );
   };
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url(${background})` }}>
       <span>{initaiallizing ? 'initaiallizing' : 'ready'}</span>
       <div className="display-flex justify-content-center">
         <video
