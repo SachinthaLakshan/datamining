@@ -1,38 +1,90 @@
 import React from 'react';
 
-const fetchedPlaylist = [
+var fetchedPlaylist = [];
+
+var selectedMood = 'h';
+
+const PlaylistHappy = [
   {
     id: 0,
-    title: '01 Lazy beat',
-    author: 'Before Coffee Drummer',
-    url: 'https://facedetectionappdataminning.000webhostapp.com/1.mp3',
+    title: 'Baila Nonstop',
+    author: 'Srilanken artist',
+    url: 'https://facedetectionappdataminning.000webhostapp.com/happybila.mp3',
     cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
   },
   {
     id: 1,
-    title: '02 Blasting beat',
-    author: 'The ADHD Drummer',
-    url: '‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍https://facedetectionappdataminning.000webhostapp.com/3.mp3',
+    title: 'Baila gamuda remix krla B&S',
+    author: 'B & S',
+    url: '‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍https://facedetectionappdataminning.000webhostapp.com/happybailabns.mp3',
+    cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
+  },
+];
+
+const PlaylistSad = [
+  {
+    id: 1,
+    title: 'Obe sina laga',
+    author: 'miuru sangeeth',
+    url: '‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍https://facedetectionappdataminning.000webhostapp.com/sad2obesina.mp3',
     cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
   },
   {
-    id: 2,
-    title: '03 Lazy beat',
-    author: 'Before Coffee Drummer',
-    url: 'https://facedetectionappdataminning.000webhostapp.com/2.mp3',
-    cover: 'https://via.placeholder.com/300/B6A2EB',
+    id: 0,
+    title: 'Ma dase Wedna',
+    author: 'miuru sangeeth',
+    url: 'https://facedetectionappdataminning.000webhostapp.com/sad1madase.mp3',
+    cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
   },
-  // {
-  //   id: 3,
-  //   title: '04 Blasting beat',
-  //   author: 'The ADHD Drummer',
-  //   url: 'https://api.codebooyah.com/audio/track2.ogg',
-  //   cover: 'https://via.placeholder.com/300/9A8CBE',
-  // },
+  {
+    id: 1,
+    title: 'Perawadanak',
+    author: 'Sanuka wikramsinghe',
+    url: '‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍https://facedetectionappdataminning.000webhostapp.com/sad3peraw.mp3',
+    cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
+  },
+];
+
+const PlaylistNatural = [
+  {
+    id: 1,
+    title: 'Oba apple malak wage',
+    author: 'amarasiri peries',
+    url: '‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍https://facedetectionappdataminning.000webhostapp.com/natural1obaapple.mp3',
+    cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
+  },
+  {
+    id: 0,
+    title: 'Depiya nagala',
+    author: 'Lawan abhishek',
+    url: 'https://facedetectionappdataminning.000webhostapp.com/natural1depiyanagala.mp3',
+    cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
+  },
+  {
+    id: 1,
+    title: 'Denana thuru ma',
+    author: 'sachintha lakshan',
+    url: '‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍https://facedetectionappdataminning.000webhostapp.com/natural1denanthuru.mp3',
+    cover: 'https://gutta.lv/wp-content/uploads/2015/10/test-img.jpg',
+  },
 ];
 
 // mock api request
-export const fetchPlaylist = () => {
+export const fetchPlaylist = (expression) => {
+  switch (expression) {
+    case 'n':
+      fetchedPlaylist = PlaylistNatural;
+      break;
+    case 'h':
+      fetchedPlaylist = PlaylistHappy;
+      break;
+    case 's':
+      //fetchedPlaylist = PlaylistSad;
+      console.log('switch case worked>>');
+      break;
+    default:
+      fetchedPlaylist = PlaylistHappy;
+  }
   return new Promise((res, rej) => {
     setTimeout(() => res(fetchedPlaylist), 1000);
   });

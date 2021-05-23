@@ -86,39 +86,37 @@ function App() {
         return finalMood;
       });
       var mood = mood_return[0];
-      console.log("mood return ",mood_return[0]);
-      console.log("mood  ",mood);
+      console.log('mood return ', mood_return[0]);
+      console.log('mood  ', mood);
 
       var selectedmood;
-      if (mood_return[0] !== 'undefined') {
-        if (mood === "happy") selectedmood = 'happy';
-       else if (mood === 'neutral') selectedmood = 'neutral';
+      if (mood_return[0] !== 'undefined' && moodDetection === true) {
+        if (mood === 'happy') selectedmood = 'happy';
+        else if (mood === 'neutral') selectedmood = 'neutral';
         else if (mood === 'sad') selectedmood = 'sad';
         else if (mood === 'surprised') selectedmood = 'surprised';
         else if (mood === 'angry') selectedmood = 'angry';
         else selectedmood = 'nomood';
 
-        
         //console.log(moodDetection, 'mode dete');
-        console.log("selected mood",selectedmood);
+        console.log('selected mood', selectedmood);
         // setExpressioncatch(expressioncatch,selectedmood);
         // console.log("set expression ", setExpressioncatch(selectedmood))
         [expressioncatch, setExpressioncatch] = selectedmood;
-       console.log('state:',  [expressioncatch, setExpressioncatch] );
+        console.log('state:', [expressioncatch, setExpressioncatch]);
 
-       console.log('state exp:',  expressioncatch );
-       
+        console.log('state exp:', expressioncatch);
       }
     }, 5000);
   };
 
   const clickHadler = () => {
     setMoodDetection(true);
-    console.log("mood detection",moodDetection);
+    console.log('mood detection', moodDetection);
   };
   const clickHadler1 = () => {
     setMoodDetection(false);
-    console.log("mood detection 1",moodDetection);
+    console.log('mood detection 1', moodDetection);
   };
 
   const WindowHadler = () => {
@@ -151,7 +149,7 @@ function App() {
           Click here !
         </button>
         <h1>Catch Again my mood !!</h1>
-        <Player expressions={expressioncatch} />
+        <Player expressions="s" />
       </>
     );
   };

@@ -46,7 +46,8 @@ export function Player(expression) {
   };
 
   const handleFetchData = async () => {
-    const playlist = await fetchPlaylist();
+    console.log('>>> in fethdata:', expression);
+    const playlist = await fetchPlaylist(expression);
     setPlaylist(playlist);
   };
 
@@ -69,11 +70,7 @@ export function Player(expression) {
     <Container>
       <PlaylistContext.Provider value={{ handleNextTrack, handlePrevTrack }}>
         <Top track={playlist[currentTrack]} />
-        <Playlist
-          onChangeTrack={handleChangeTrack}
-          playlist={playlist}
-          expression={expression}
-        />
+        <Playlist onChangeTrack={handleChangeTrack} playlist={playlist} />
       </PlaylistContext.Provider>
     </Container>
   );
