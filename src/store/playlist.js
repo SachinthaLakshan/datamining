@@ -82,7 +82,7 @@ export const fetchPlaylist = (emotion) => {
       fetchedPlaylist = PlaylistSad;
       break;
     default:
-      fetchedPlaylist = PlaylistSad;
+      fetchedPlaylist = PlaylistNatural;
       console.log("hiiiii");
   }
 

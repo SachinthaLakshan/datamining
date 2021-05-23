@@ -9,10 +9,12 @@ function App() {
   const videoHeight = 640;
   const [initaiallizing, setInitaiallizing] = useState(false);
   const [moodDetection, setMoodDetection] = useState(false);
-  var [expressioncatch, setExpressioncatch] = useState(String);
-  // var moodDetection = true;
+  const [expressioncatch, setExpressioncatch] = useState(String);
+  var moodDetectionSet = false;
   const videoRef = useRef();
   const canvasRef = useRef();
+
+  var temp = null;
 
   useEffect(() => {
     const loadModels = async () => {
@@ -86,36 +88,25 @@ function App() {
         return finalMood;
       });
 
-      // var mood = mood_return;
-      // console.log('xxxxxxxxxxx  ', mood);
-
       var selectedmood;
-      // if (mood_return[0] !== 'undefined' && moodDetection === true) {
       if (mood_return[0] !== 'undefined') {
 
-        setExpressioncatch(mood_return[0]);
-        console.log("mood return 0 value as string", mood_return[0]);
-        console.log("mood detection" , moodDetection);
-
-        // if (mood === 'happy') {selectedmood = 'happy';}
-        // else if (mood === 'neutral') {selectedmood = 'neutral';}
-        // else if (mood === 'sad') {selectedmood = 'sad';}
-        // else if (mood === 'surprised') {selectedmood = 'surprised';}
-        // else if (mood === 'angry') {selectedmood = 'angry';}
-        // else {selectedmood = 'nomood';}
-      }
+      
+      window.temp = mood_return[0];
+    }
     }, 5000);
   };
 
   const clickHadler = () => {
-    // moodDetection = true;
+    setExpressioncatch(window.temp);
+
     setMoodDetection(true);
-    console.log('mood detection', moodDetection);
+    moodDetectionSet = true;
   };
   const clickHadler1 = () => {
-    // moodDetection = false;
+    
     setMoodDetection(false);
-    console.log('mood detection 1', moodDetection);
+    moodDetectionSet = false;
   };
 
   const WindowHadler = () => {
@@ -145,7 +136,7 @@ function App() {
           }}
           onClick={clickHadler1}
         >
-          Click!
+          Click here!
         </button>
         <h1>Catch Again my mood !!</h1>
         <Player emotion={expressioncatch} />
