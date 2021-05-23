@@ -5,7 +5,7 @@ import { Top } from './Top';
 import { fetchPlaylist, PlaylistContext } from '../../store/playlist';
 import PropTypes from 'prop-types';
 
-export function Player(expression) {
+export function Player(props) {
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(0);
 
@@ -46,8 +46,8 @@ export function Player(expression) {
   };
 
   const handleFetchData = async () => {
-    console.log('>>> in fethdata:', expression);
-    const playlist = await fetchPlaylist(expression);
+    console.log('>>> in player:', props.emotion);
+    const playlist = await fetchPlaylist(props.emotion);
     setPlaylist(playlist);
   };
 
@@ -63,7 +63,7 @@ export function Player(expression) {
     );
   }
   Player.propTypes = {
-    expression: PropTypes.string,
+    emotion: PropTypes.string,
   };
 
   return (

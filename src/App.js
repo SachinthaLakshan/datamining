@@ -10,6 +10,7 @@ function App() {
   const [initaiallizing, setInitaiallizing] = useState(false);
   const [moodDetection, setMoodDetection] = useState(false);
   var [expressioncatch, setExpressioncatch] = useState(String);
+  // var moodDetection = true;
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -82,39 +83,37 @@ function App() {
             finalMood = moods[i];
           }
         }
-
         return finalMood;
       });
-      var mood = mood_return[0];
-      console.log('mood return ', mood_return[0]);
-      console.log('mood  ', mood);
+
+      // var mood = mood_return;
+      // console.log('xxxxxxxxxxx  ', mood);
 
       var selectedmood;
-      if (mood_return[0] !== 'undefined' && moodDetection === true) {
-        if (mood === 'happy') selectedmood = 'happy';
-        else if (mood === 'neutral') selectedmood = 'neutral';
-        else if (mood === 'sad') selectedmood = 'sad';
-        else if (mood === 'surprised') selectedmood = 'surprised';
-        else if (mood === 'angry') selectedmood = 'angry';
-        else selectedmood = 'nomood';
+      // if (mood_return[0] !== 'undefined' && moodDetection === true) {
+      if (mood_return[0] !== 'undefined') {
 
-        //console.log(moodDetection, 'mode dete');
-        console.log('selected mood', selectedmood);
-        // setExpressioncatch(expressioncatch,selectedmood);
-        // console.log("set expression ", setExpressioncatch(selectedmood))
-        [expressioncatch, setExpressioncatch] = selectedmood;
-        console.log('state:', [expressioncatch, setExpressioncatch]);
+        setExpressioncatch(mood_return[0]);
+        console.log("mood return 0 value as string", mood_return[0]);
+        console.log("mood detection" , moodDetection);
 
-        console.log('state exp:', expressioncatch);
+        // if (mood === 'happy') {selectedmood = 'happy';}
+        // else if (mood === 'neutral') {selectedmood = 'neutral';}
+        // else if (mood === 'sad') {selectedmood = 'sad';}
+        // else if (mood === 'surprised') {selectedmood = 'surprised';}
+        // else if (mood === 'angry') {selectedmood = 'angry';}
+        // else {selectedmood = 'nomood';}
       }
     }, 5000);
   };
 
   const clickHadler = () => {
+    // moodDetection = true;
     setMoodDetection(true);
     console.log('mood detection', moodDetection);
   };
   const clickHadler1 = () => {
+    // moodDetection = false;
     setMoodDetection(false);
     console.log('mood detection 1', moodDetection);
   };
@@ -146,10 +145,10 @@ function App() {
           }}
           onClick={clickHadler1}
         >
-          Click here !
+          Click!
         </button>
         <h1>Catch Again my mood !!</h1>
-        <Player expressions="s" />
+        <Player emotion={expressioncatch} />
       </>
     );
   };

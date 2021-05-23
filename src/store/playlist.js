@@ -2,7 +2,7 @@ import React from 'react';
 
 var fetchedPlaylist = [];
 
-var selectedMood = 'h';
+// var selectedMood = 'h';
 
 const PlaylistHappy = [
   {
@@ -70,21 +70,28 @@ const PlaylistNatural = [
 ];
 
 // mock api request
-export const fetchPlaylist = (expression) => {
-  switch (expression) {
-    case 'n':
+export const fetchPlaylist = (emotion) => {
+  switch (emotion) {
+    case 'neutral':
       fetchedPlaylist = PlaylistNatural;
       break;
-    case 'h':
+    case 'happy':
       fetchedPlaylist = PlaylistHappy;
       break;
-    case 's':
-      //fetchedPlaylist = PlaylistSad;
-      console.log('switch case worked>>');
+    case 'sad':
+      fetchedPlaylist = PlaylistSad;
       break;
     default:
-      fetchedPlaylist = PlaylistHappy;
+      fetchedPlaylist = PlaylistSad;
+      console.log("hiiiii");
   }
+
+  // if (emotion==="s"){
+  //   console.log("fuck fuck fuck");
+  // }
+  // else{
+  //   console.log("fuck double");
+  // }
   return new Promise((res, rej) => {
     setTimeout(() => res(fetchedPlaylist), 1000);
   });
