@@ -13,7 +13,7 @@ export function Playlist(props) {
     width: 100%;
     height: 45px;
     cursor: pointer;
-    color: #b2b2b2;
+    color: #FFFEFE;
     margin-left: 2rem;
     margin-top: 1rem;
     display: flex;

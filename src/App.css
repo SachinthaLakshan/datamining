@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background-image: url("C:\Users\Shan\Desktop\project\New folder\datamining\src\cover\back.png");
+}
+.card {
+  background-color: cornsilk;
 }
 
 .display-flex {
@@ -10,4 +14,7 @@
 }
 .position-absolute {
   position: absolute;
+}
+.headerName {
+  color: aliceblue;
 }

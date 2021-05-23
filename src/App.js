@@ -114,7 +114,7 @@ function App() {
       <>
         <button
           style={{
-            background: 'black',
+            background: '#FC0400',
             width: 200,
             height: 60,
             color: 'white',
@@ -123,13 +123,14 @@ function App() {
         >
           Click here!
         </button>
-        <h1>Catch my mood !!</h1>
+        <h1 color='white' className="headerName">Catch my mood !!</h1>
       </>
     ) : (
       <>
+      <card className="card">
         <button
           style={{
-            background: 'black',
+            background: '#FC0400',
             width: 200,
             height: 60,
             color: 'white',
@@ -138,8 +139,9 @@ function App() {
         >
           Click here!
         </button>
-        <h1>Catch Again my mood !!</h1>
+        <h1 color='white' className="headerName">Catch Again my mood !!</h1>
         <Player emotion={expressioncatch} />
+        </card>
       </>
     );
   };
