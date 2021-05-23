@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Playlist } from './Playlist';
 import { Top } from './Top';
 import { fetchPlaylist, PlaylistContext } from '../../store/playlist';
+import PropTypes from 'prop-types';
 
-export function Player() {
+export function Player(expression) {
   const [playlist, setPlaylist] = useState([]);
   const [currentTrack, setCurrentTrack] = useState(0);
 
@@ -60,12 +61,19 @@ export function Player() {
       </Container>
     );
   }
+  Player.propTypes = {
+    expression: PropTypes.string,
+  };
 
   return (
     <Container>
       <PlaylistContext.Provider value={{ handleNextTrack, handlePrevTrack }}>
         <Top track={playlist[currentTrack]} />
-        <Playlist onChangeTrack={handleChangeTrack} playlist={playlist} />
+        <Playlist
+          onChangeTrack={handleChangeTrack}
+          playlist={playlist}
+          expression={expression}
+        />
       </PlaylistContext.Provider>
     </Container>
   );

@@ -9,6 +9,7 @@ function App() {
   const videoHeight = 640;
   const [initaiallizing, setInitaiallizing] = useState(false);
   const [moodDetection, setMoodDetection] = useState(false);
+  const [expressioncatch, setExpressioncatch] = useState(String);
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -74,39 +75,47 @@ function App() {
         ];
         var getMaxValue = Math.max(...exp);
         var moods = ['happy', 'neutral', 'sad', 'surprised', 'angry'];
-        var finalMood;
+        var finalMood = '';
 
         for (var i = 0; i <= exp.length; i++) {
           if (getMaxValue === exp[i]) {
             finalMood = moods[i];
           }
         }
+
         return finalMood;
       });
+      var mood = mood_return[0];
+      var selectedmood;
+      if (mood_return[0] !== 'undefined') {
+        if (mood === 'happy') selectedmood = 'happy';
+        if (mood === 'neutral') selectedmood = 'neutral';
+        if (mood === 'sad') selectedmood = 'sad';
+        if (mood === 'surprised') selectedmood = 'surprised';
+        if (mood === 'angry') selectedmood = 'angry';
+        else selectedmood = 'nomood';
 
-      console.log('>>>>', mood_return);
+        //console.log(moodDetection, 'mode dete');
+        console.log(selectedmood);
+        setExpressioncatch(selectedmood);
+        console.log('state:', expressioncatch);
+        //console.log(mood_return[0]);
+      }
     }, 1500);
   };
 
   const clickHadler = () => {
     setMoodDetection(true);
+    console.log(moodDetection);
+  };
+  const clickHadler1 = () => {
+    setMoodDetection(false);
+    console.log(moodDetection);
   };
 
   const WindowHadler = () => {
     return !moodDetection ? (
       <>
-        <span>{initaiallizing ? 'initaiallizing' : 'ready'}</span>
-        <div className="display-flex justify-content-center">
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            height={videoHeight}
-            width={videoWidth}
-            onPlay={haddleVideoOnPlay}
-          />
-          <canvas ref={canvasRef} className="position-absolute" />
-        </div>
         <button
           style={{
             background: 'black',
@@ -118,11 +127,10 @@ function App() {
         >
           Click here!
         </button>
-        <h1>Capture your emotion !!</h1>
+        <h1>Catch my mood !!</h1>
       </>
     ) : (
       <>
-        <Player />
         <button
           style={{
             background: 'black',
@@ -130,15 +138,32 @@ function App() {
             height: 60,
             color: 'white',
           }}
-          onClick={clickHadler}
+          onClick={clickHadler1}
         >
-          Click here!
+          Click here !
         </button>
-        <h1>Change emotion !!</h1>
+        <h1>Catch Again my mood !!</h1>
+        <Player expressions={expressioncatch} />
       </>
     );
   };
-  return <div className="App">{WindowHadler()}</div>;
+  return (
+    <div className="App">
+      <span>{initaiallizing ? 'initaiallizing' : 'ready'}</span>
+      <div className="display-flex justify-content-center">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          height={videoHeight}
+          width={videoWidth}
+          onPlay={haddleVideoOnPlay}
+        />
+        <canvas ref={canvasRef} className="position-absolute" />
+      </div>
+      <div>{WindowHadler()}</div>
+    </div>
+  );
 }
 
 export default App;

@@ -63,4 +63,5 @@ export function Playlist(props) {
 Playlist.PropsTypes = {
   playlist: PropsTypes.array,
   onChangeTrack: PropsTypes.func,
+  expression: PropsTypes.string,
 };
