@@ -9,7 +9,7 @@ function App() {
   const videoHeight = 640;
   const [initaiallizing, setInitaiallizing] = useState(false);
   const [moodDetection, setMoodDetection] = useState(false);
-  const [expressioncatch, setExpressioncatch] = useState(String);
+  var [expressioncatch, setExpressioncatch] = useState(String);
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -86,31 +86,39 @@ function App() {
         return finalMood;
       });
       var mood = mood_return[0];
+      console.log("mood return ",mood_return[0]);
+      console.log("mood  ",mood);
+
       var selectedmood;
       if (mood_return[0] !== 'undefined') {
-        if (mood === 'happy') selectedmood = 'happy';
-        if (mood === 'neutral') selectedmood = 'neutral';
-        if (mood === 'sad') selectedmood = 'sad';
-        if (mood === 'surprised') selectedmood = 'surprised';
-        if (mood === 'angry') selectedmood = 'angry';
+        if (mood === "happy") selectedmood = 'happy';
+       else if (mood === 'neutral') selectedmood = 'neutral';
+        else if (mood === 'sad') selectedmood = 'sad';
+        else if (mood === 'surprised') selectedmood = 'surprised';
+        else if (mood === 'angry') selectedmood = 'angry';
         else selectedmood = 'nomood';
 
+        
         //console.log(moodDetection, 'mode dete');
-        console.log(selectedmood);
-        setExpressioncatch(selectedmood);
-        console.log('state:', expressioncatch);
-        //console.log(mood_return[0]);
+        console.log("selected mood",selectedmood);
+        // setExpressioncatch(expressioncatch,selectedmood);
+        // console.log("set expression ", setExpressioncatch(selectedmood))
+        [expressioncatch, setExpressioncatch] = selectedmood;
+       console.log('state:',  [expressioncatch, setExpressioncatch] );
+
+       console.log('state exp:',  expressioncatch );
+       
       }
-    }, 1500);
+    }, 5000);
   };
 
   const clickHadler = () => {
     setMoodDetection(true);
-    console.log(moodDetection);
+    console.log("mood detection",moodDetection);
   };
   const clickHadler1 = () => {
     setMoodDetection(false);
-    console.log(moodDetection);
+    console.log("mood detection 1",moodDetection);
   };
 
   const WindowHadler = () => {
