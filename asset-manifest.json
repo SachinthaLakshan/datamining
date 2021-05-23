@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/datamining/static/css/main.c55f20ce.chunk.css",
+    "main.js": "/datamining/static/js/main.2d5a5ca7.chunk.js",
+    "main.js.map": "/datamining/static/js/main.2d5a5ca7.chunk.js.map",
+    "runtime-main.js": "/datamining/static/js/runtime-main.a1c46c46.js",
+    "runtime-main.js.map": "/datamining/static/js/runtime-main.a1c46c46.js.map",
+    "static/js/2.792bb67c.chunk.js": "/datamining/static/js/2.792bb67c.chunk.js",
+    "static/js/2.792bb67c.chunk.js.map": "/datamining/static/js/2.792bb67c.chunk.js.map",
+    "static/js/3.18ad29f1.chunk.js": "/datamining/static/js/3.18ad29f1.chunk.js",
+    "static/js/3.18ad29f1.chunk.js.map": "/datamining/static/js/3.18ad29f1.chunk.js.map",
+    "index.html": "/datamining/index.html",
+    "static/css/main.c55f20ce.chunk.css.map": "/datamining/static/css/main.c55f20ce.chunk.css.map",
+    "static/js/2.792bb67c.chunk.js.LICENSE.txt": "/datamining/static/js/2.792bb67c.chunk.js.LICENSE.txt",
+    "static/media/back.7a561ac1.png": "/datamining/static/media/back.7a561ac1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a1c46c46.js",
+    "static/js/2.792bb67c.chunk.js",
+    "static/css/main.c55f20ce.chunk.css",
+    "static/js/main.2d5a5ca7.chunk.js"
+  ]
+}
